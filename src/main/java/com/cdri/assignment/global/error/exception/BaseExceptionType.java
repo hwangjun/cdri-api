@@ -1,4 +1,4 @@
-package com.cdri.assignment.global.exception;
+package com.cdri.assignment.global.error.exception;
 
 import org.springframework.http.HttpStatus;
 

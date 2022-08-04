@@ -1,6 +1,8 @@
 package com.cdri.assignment.domain.book.dao;
 
-import com.cdri.assignment.domain.book.dto.BookResponseDto;
+import com.cdri.assignment.domain.book.dto.BookSearchResponse;
+import com.cdri.assignment.domain.book.dto.SearchCondition;
+import com.cdri.assignment.domain.category.dto.CategorySearchResponse;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -8,32 +10,49 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-import static com.cdri.assignment.domain.book.QBook.book;
+import static com.cdri.assignment.domain.book.domain.QBook.book;
+import static com.cdri.assignment.domain.category.domain.QCategory.category;
 import static org.springframework.util.StringUtils.hasText;
 
 @RequiredArgsConstructor
 public class BookRepositoryImpl implements BookRepositoryCustom {
+
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<BookResponseDto> searchBooks(String author, String title) {
+    public List<BookSearchResponse> search(SearchCondition searchCondition) {
         return queryFactory
-                .select(Projections.constructor(BookResponseDto.class,
-                        book.id,
-                        book.author,
-                        book.title
+                .select(
+                        Projections.constructor(BookSearchResponse.class,
+                                book.id,
+                                book.author,
+                                book.title,
+                                book.bookStatus,
+                                book.isRentalAvailable,
+                                Projections.constructor(CategorySearchResponse.class,
+                                        category.id,
+                                        category.name
+                                )
                         ))
                 .from(book)
-                .where(authorEq(author),
-                        titleEq(title))
+                .join(book.category, category)
+                .where(
+                        categoryEq(searchCondition),
+                        authorContains(searchCondition),
+                        titleContains(searchCondition)
+                )
                 .fetch();
     }
 
-    private BooleanExpression authorEq(String author) {
-        return hasText(author) ? book.author.eq(author) : null;
+    private BooleanExpression authorContains(SearchCondition searchCondition) {
+        return hasText(searchCondition.getAuthor()) ? book.author.contains(searchCondition.getAuthor()) : null;
     }
 
-    private BooleanExpression titleEq(String title) {
-        return hasText(title) ? book.title.eq(title) : null;
+    private BooleanExpression titleContains(SearchCondition searchCondition) {
+        return hasText(searchCondition.getTitle()) ? book.title.contains(searchCondition.getTitle()) : null;
+    }
+
+    private BooleanExpression categoryEq(SearchCondition searchCondition) {
+        return searchCondition.getCategory() != null ? book.category.name.eq(searchCondition.getCategory()) : null;
     }
 }
