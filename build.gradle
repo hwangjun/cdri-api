@@ -23,13 +23,18 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
+
+    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // swagger > open api
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
 
     // 바인딩 변수가 포함된 SQL 을 로깅
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'

@@ -22,10 +22,10 @@ public class BookService {
     private final BookRepository bookRepository;
     private final CategoryRepository categoryRepository;
 
-    public BookResponseDto selectBookOne(Long bookId) {
+    public BookSelectResponse selectBookOne(Long bookId) {
         // 도서 존재하는지 확인
         Book book = bookExistenceCheck(bookId);
-        return new BookResponseDto(book);
+        return BookSelectResponse.fromEntity(book);
     }
 
     public List<BookSearchResponse> searchBook(SearchCondition searchCondition) {

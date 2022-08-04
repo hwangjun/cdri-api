@@ -9,15 +9,15 @@ public interface BookRepository extends JpaRepository<Book, Long>, BookRepositor
     /*
 
     //  메소드명 쿼리 사용안함
-    List<BookResponseDto> findAllByAuthorContaining(String author);
-    List<BookResponseDto> findAllByTitleContaining(String title);
-    List<BookResponseDto> findBooksByAuthorContainsAndTitleContains(String author, String title);
-    List<BookResponseDto> findBooksByCategory(Category category);
-    List<BookResponseDto> findAllByCategory(Category category);
+    List<BookSelectResponse> findAllByAuthorContaining(String author);
+    List<BookSelectResponse> findAllByTitleContaining(String title);
+    List<BookSelectResponse> findBooksByAuthorContainsAndTitleContains(String author, String title);
+    List<BookSelectResponse> findBooksByCategory(Category category);
+    List<BookSelectResponse> findAllByCategory(Category category);
 
     // 어노테이션 jpql
     @Query("select b from Book b where b.author like %:author% and b.title like %:title%")
-    List<BookResponseDto> searchBooksJpql(@Param("author") String author, @Param("title") String title);
+    List<BookSelectResponse> searchBooksJpql(@Param("author") String author, @Param("title") String title);
 
     */
 }

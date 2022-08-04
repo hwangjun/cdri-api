@@ -1,22 +1,16 @@
 package com.cdri.assignment.domain.category.application;
 
-import com.cdri.assignment.domain.category.api.CategoryApiController;
 import com.cdri.assignment.domain.category.dao.CategoryRepository;
 import com.cdri.assignment.domain.category.domain.Category;
 import com.cdri.assignment.domain.category.dto.CategoryCreateRequest;
 import com.cdri.assignment.domain.category.dto.CategoryCreateResponse;
-import com.cdri.assignment.domain.category.dto.CategorySearchResponse;
+import com.cdri.assignment.domain.category.dto.CategorySelectResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.filter.CharacterEncodingFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +62,7 @@ class CategoryServiceTest {
         given(categoryRepository.findById(anyLong()))
                 .willReturn(Optional.ofNullable(Category.builder().id(categoryId).name("문학").build()));
         // when
-        CategorySearchResponse response = categoryService.selectCategoryOne(categoryId);
+        CategorySelectResponse response = categoryService.selectCategoryOne(categoryId);
         // then
         assertEquals(1L, response.getId());
         assertEquals("문학", response.getName());
@@ -85,7 +79,7 @@ class CategoryServiceTest {
 
         given(categoryRepository.findAll()).willReturn(list);
         // when
-        List<CategorySearchResponse> response = categoryService.selectCategoryList();
+        List<CategorySelectResponse> response = categoryService.selectCategoryList();
         // then
         assertEquals(1L, response.get(0).getId());
         assertEquals("문학", response.get(0).getName());

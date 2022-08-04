@@ -2,7 +2,7 @@ package com.cdri.assignment.domain.book.dao;
 
 import com.cdri.assignment.domain.book.dto.BookSearchResponse;
 import com.cdri.assignment.domain.book.dto.SearchCondition;
-import com.cdri.assignment.domain.category.dto.CategorySearchResponse;
+import com.cdri.assignment.domain.category.dto.CategorySelectResponse;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -29,7 +29,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
                                 book.title,
                                 book.bookStatus,
                                 book.isRentalAvailable,
-                                Projections.constructor(CategorySearchResponse.class,
+                                Projections.constructor(CategorySelectResponse.class,
                                         category.id,
                                         category.name
                                 )
