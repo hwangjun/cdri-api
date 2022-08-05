@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("CategoryService 테스트")
+@DisplayName("CategoryService 단위 테스트")
 class CategoryServiceTest {
 
     @Mock

@@ -61,7 +61,9 @@ public class BookApiController {
         return ResponseEntity.ok(bookService.selectBookOne(bookId));
     }
 
-    @Operation(summary = "도서 수정", description = "도서 카테고리, 상태(훼손, 분실, 정상) 수정",
+    @Operation(summary = "도서 수정", description = "도서 카테고리, 상태(훼손, 분실, 정상) 수정 \n" +
+            "1. bookStatus 값만 보내면 도서상태 변경 \n" +
+            "2. categoryId 값만 보내면 카테고리 변경",
             responses = {
                     @ApiResponse(responseCode = "200", description = "도서 조회 성공",
                             content = @Content(schema = @Schema(implementation = BookSelectResponse.class))),

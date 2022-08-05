@@ -49,10 +49,6 @@ public class Book extends BaseEntity {
         this.isRentalAvailable = isRentalAvailable;
     }
 
-//    public void updateBookStatus() {
-//        this.bookStatus = bookStatus;
-//    }
-
     // 카테고리 설정
     public void updateCategory(Category category) {
         // 이미 카테고리가 있을 경우 관계를 제거한다.
@@ -70,10 +66,6 @@ public class Book extends BaseEntity {
     public void updateStatus(BookStatus bookStatus) {
         this.bookStatus = bookStatus;
 
-        if (bookStatus != BookStatus.NORMAL) {
-            this.isRentalAvailable = false;
-        } else {
-            this.isRentalAvailable = true;
-        }
+        this.isRentalAvailable = bookStatus == BookStatus.NORMAL;
     }
 }

@@ -5,6 +5,7 @@ import com.cdri.assignment.domain.category.domain.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -13,10 +14,12 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@DisplayName("CategoryRepository 단위 테스트")
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Import(TestConfig.class)
@@ -26,7 +29,6 @@ class CategoryRepositoryTest {
     @Autowired
     private CategoryRepository categoryRepository;
 
-
     @DisplayName("카테고리 전체 조회 테스트")
     @Test
     public void selectCategoryAll() {
@@ -34,12 +36,28 @@ class CategoryRepositoryTest {
         // given
         // when
         List<Category> response = categoryRepository.findAll();
-         // then
+        // then
         // data.sql 기준 첫번째 카테고리 이름
         assertEquals("문학", response.get(0).getName());
     }
 
+    @DisplayName("카테고리 ID로 조회 테스트")
+    @Test
+    public void selectCategoryOne() {
 
+        // given
+        Long categoryId = 1L;
+
+        // when
+        Optional<Category> response = categoryRepository.findById(categoryId);
+
+        // then
+        if (response.isPresent()) {
+            Category category = response.get();
+            assertEquals(categoryId, category.getId());
+            assertEquals("문학", category.getName());
+        }
+    }
 
     @DisplayName("카테고리 생성 테스트")
     @Test
@@ -70,6 +88,5 @@ class CategoryRepositoryTest {
 
         // when && then
         assertThrows(DataIntegrityViolationException.class, () -> categoryRepository.save(category));
-
     }
 }
