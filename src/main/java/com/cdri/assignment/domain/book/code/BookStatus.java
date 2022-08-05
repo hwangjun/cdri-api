@@ -1,4 +1,4 @@
-package com.cdri.assignment.domain.book;
+package com.cdri.assignment.domain.book.code;
 
 
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.cdri.assignment.domain.book.dto;
 
-import com.cdri.assignment.domain.book.BookStatus;
+import com.cdri.assignment.domain.book.code.BookStatus;
 import com.cdri.assignment.domain.book.domain.Book;
 import com.cdri.assignment.domain.category.dto.CategorySelectResponse;
 import io.swagger.v3.oas.annotations.media.Schema;

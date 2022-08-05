@@ -1,33 +1,25 @@
 package com.cdri.assignment.domain.book.application;
 
-import com.cdri.assignment.domain.book.BookStatus;
+import com.cdri.assignment.domain.book.code.BookStatus;
 import com.cdri.assignment.domain.book.dao.BookRepository;
 import com.cdri.assignment.domain.book.domain.Book;
 import com.cdri.assignment.domain.book.dto.*;
 import com.cdri.assignment.domain.category.dao.CategoryRepository;
 import com.cdri.assignment.domain.category.domain.Category;
-import com.cdri.assignment.domain.category.dto.CategoryCreateRequest;
-import com.cdri.assignment.domain.category.dto.CategoryCreateResponse;
-import com.cdri.assignment.domain.category.dto.CategorySelectResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)

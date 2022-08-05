@@ -1,7 +1,6 @@
 package com.cdri.assignment.domain.book.dto;
 
-import com.cdri.assignment.domain.book.BookStatus;
-import io.swagger.v3.oas.annotations.Parameter;
+import com.cdri.assignment.domain.book.code.BookStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;

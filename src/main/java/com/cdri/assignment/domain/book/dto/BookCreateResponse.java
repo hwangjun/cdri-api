@@ -1,13 +1,11 @@
 package com.cdri.assignment.domain.book.dto;
 
 import com.cdri.assignment.domain.book.domain.Book;
-import com.cdri.assignment.domain.book.BookStatus;
+import com.cdri.assignment.domain.book.code.BookStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.NotNull;
 
 @Schema(description = "도서등록 응답 DTO")
 @Getter

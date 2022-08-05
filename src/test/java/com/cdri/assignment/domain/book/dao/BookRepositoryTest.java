@@ -1,12 +1,11 @@
 package com.cdri.assignment.domain.book.dao;
 
 import com.cdri.assignment.config.TestConfig;
-import com.cdri.assignment.domain.book.BookStatus;
+import com.cdri.assignment.domain.book.code.BookStatus;
 import com.cdri.assignment.domain.book.domain.Book;
 import com.cdri.assignment.domain.book.dto.BookSearchResponse;
 import com.cdri.assignment.domain.book.dto.SearchCondition;
 import com.cdri.assignment.domain.category.domain.Category;
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,7 +1,7 @@
 package com.cdri.assignment.domain.book.domain;
 
 
-import com.cdri.assignment.domain.book.BookStatus;
+import com.cdri.assignment.domain.book.code.BookStatus;
 import com.cdri.assignment.domain.category.domain.Category;
 import com.cdri.assignment.global.common.BaseEntity;
 import com.cdri.assignment.global.util.BooleanToYNConverter;

@@ -1,7 +1,7 @@
 package com.cdri.assignment.domain.book.application;
 
 import com.cdri.assignment.domain.book.domain.Book;
-import com.cdri.assignment.domain.book.BookStatus;
+import com.cdri.assignment.domain.book.code.BookStatus;
 import com.cdri.assignment.domain.book.dao.BookRepository;
 import com.cdri.assignment.domain.book.dto.*;
 import com.cdri.assignment.domain.category.domain.Category;
